@@ -70,7 +70,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.field {
+.field, #submit-button {
     position: relative;
     height: 45px;
     width: 100%;
@@ -78,13 +78,13 @@
     background: rgba(255,255,255,0.94)
 }
 
-.field span {
+.field span, #submit-button {
     color: black;
     width: 40px;
     line-height: 45px;
 }
 
-.field input {
+.field input, #submit-button {
     height: 100%;
     width: 100%;
     background: transparent;
