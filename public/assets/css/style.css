@@ -24,7 +24,7 @@
 
 .content {
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 33%;
     transform: translate(-50, -50);
     text-align: center;
@@ -38,7 +38,33 @@
 
 .content header {
     color: white;
-    font-size: 30px;
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content p {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content header:hover {
+    color: white;
+    font-size: 36px;
+    transition: 1s;
+    font-weight: 600;
+    margin: 0 0 35px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content p:hover {
+    color: white;
+    font-size: 26px;
+    transition: 1s;
     font-weight: 600;
     margin: 0 0 35px 0;
     font-family: 'Poppins', sans-serif;
@@ -69,6 +95,68 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.show {
+    position: absolute;
+    right: 13px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    cursor: pointer;
+    display: none;
+}
+
+.password:valid ~ .show {
+    display: block
+}
+
 .space {
     margin-top: 16px; 
+}
+
+.pass {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.pass a {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.pass:hover a {
+    text-decoration: underline;
+}
+
+input[type="submit"]{
+    background: darkslategray;
+    border: 1px solid black;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: white;
+    color: black;
+    transition: 0.5s;
+}
+
+.signup {
+    color: white;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signup a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.signup a:hover {
+    text-decoration: underline;
 }
