@@ -1,25 +1,42 @@
-  // Getting references to our form and inputs
-  // var loginForm = $("#login");
-  // var emailInput = $("input#email-input");
-  // var passwordInput = $("input[type='password']");
-
-  const name = document.getElementById("name");
+  const nameElement = document.getElementById("name");
   const password = document.getElementById("password");
   const form = document.getElementById("form");
+  
 
   // When the form is submitted, we validate there's an email and password entered
-  form.onclick("submit", (e) => {
+  form.onsubmit = (e) => {
     e.preventDefault();
-    let messages = [];
+    console.log(password.value);
+    console.log(nameElement.value);
 
-    if (password.length > 6 {
-      messages.push("Password must be between 6-20 characters")
+    const response = await fetch("/API/Login", {
+      method: "POST", 
+      body: JSON.stringify({
+        username: nameElement.value, 
+        password: password.value,   
+      }),
+      headers:{
+        "Content-Type":"application/json"
+      }
+    });
+
+    if (response.ok){
+      console.log("Success")
     }
 
-    if (password.length , 20 {
-      messages.push("Password must be between 6-20 characters")
+    else{
+      console.log("Error")
     }
+    // let messages = [];
 
+    // if (password.length > 6) {
+    //   messages.push("Password must be between 6-20 characters")
+    // }
+
+    // if (password.length < 20) {
+    //   messages.push("Password must be between 6-20 characters")
+    // }
+    }
   
   //   let userData = {
   //     email: emailInput.val().trim().toLowerCase(),
