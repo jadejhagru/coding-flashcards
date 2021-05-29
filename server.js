@@ -15,9 +15,6 @@ app.use(
   })
 );
 
-// // auth router attaches /login, /logout, and /callback routes to the baseURL
-// app.use(auth(config));
-
 app.get("/", (req, res) => {
   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
