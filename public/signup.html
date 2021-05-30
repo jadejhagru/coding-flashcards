@@ -11,25 +11,52 @@
 <body>
     <div class="bg-img">
         <div class="content">
-            <header>Create an Account</header>
-            <form action="#">
+            <header>CODING FLASHCARDS</header>
+            <p>CREATE AN ACCOUNT</p>
+            <form id = "form" action="#" onsubmit="signup()">
                 <div class="field">
                     <span class="fa fa-user"></span>
-                    <input type="text" required placeholder="Email">
+                    <input id = "name" type="text" required placeholder="Username">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
+
+                <div class="field space">
+                    <span class="fa fa-user"></span>
+                    <input id = "name" type="text" required placeholder="Email">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+
                 <div class="field space">
                     <span class="fa fa-lock"></span>
-                    <input type="password" class="password" required placeholder="Password">
+                    <input id = "password" type="password" class="password" required placeholder="Password">
+                    <span class="show">SHOW</span>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
-                <br>
-                <div class="field">
-                    <input type="submit" value="SUBMIT">
+
+                <div class="field space">
+                    <span class="fa fa-lock"></span>
+                    <input id = "password" type="password" class="password" required placeholder="Confirm Password">
+                    <span class="show">SHOW</span>
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
                 </div>
+
+            
+                <div class="field space">
+                    <input type="submit" value="SIGN UP">
                 </div>
+        
             </form>
         </div>
     </div>
-
+    	
     <script src="assets/js/login.js"></script>
     
 </body>
