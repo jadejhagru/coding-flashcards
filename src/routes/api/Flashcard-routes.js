@@ -59,7 +59,9 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   Flashcard.update(
     {
-      tag_name: req.body.tag_name,
+      question: req.body.question,
+      answer: req.body.answer,
+      user_id: req.body.user_id,
     },
     {
       where: {
