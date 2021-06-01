@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
 }
 
 .bg-img {
-    background-image: url("../images/background.jpg");
-    height: 105vh;
-    background-size: cover;
-    background-position: center;
+  background-image: url("../images/background.jpg");
+  height: 105vh;
+  background-size: cover;
+  background-position: center;
 }
 
 /* .bg-img:after {
@@ -25,18 +25,18 @@
 } */
 
 .content {
-    position: absolute;
-    top: 5%;
-    left: 33%;
-    transform: translate(-50, -50);
-    text-align: center;
-    z-index: 999;
-    width: 370px;
-    text-align: center;
-    padding: 30px 32px;
-    background: rgba(255,255,255,0.04);
-    box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-	border-radius: 10px;
+  position: absolute;
+  top: 5%;
+  left: 33%;
+  transform: translate(-50, -50);
+  text-align: center;
+  z-index: 999;
+  width: 370px;
+  text-align: center;
+  padding: 30px 32px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: -1px 4px 28px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
 }
 
 /* .content header {
@@ -48,286 +48,287 @@
 } */
 
 .content p {
-    color: white;
-    font-size: 25px;
-    font-weight: 600;
-    margin: 0 0 35px 0;
-    font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: "Poppins", sans-serif;
 }
 
 .content header:hover {
-    color: white;
-    font-size: 36px;
-    transition: 1s;
-    font-weight: 600;
-    margin: 0 0 35px 0;
-    font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 36px;
+  transition: 1s;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: "Poppins", sans-serif;
 }
 
 .content p:hover {
-    color: white;
-    font-size: 26px;
-    transition: 1s;
-    font-weight: 600;
-    margin: 0 0 35px 0;
-    font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 26px;
+  transition: 1s;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: "Poppins", sans-serif;
 }
 
-.field, #submit-button {
-    position: relative;
-    height: 45px;
-    width: 100%;
-    display: flex;
-    background: rgba(255,255,255,0.94);
-	border-radius: 5px;
+.field,
+#submit-button {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  display: flex;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 5px;
 }
 
-.field span, #submit-button {
-    color: black;
-    width: 40px;
-    line-height: 45px;
+.field span,
+#submit-button {
+  color: black;
+  width: 40px;
+  line-height: 45px;
 }
 
-.field input, #submit-button {
-    height: 100%;
-    width: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #222;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
+.field input,
+#submit-button {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #222;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
 }
 
 .show {
-    position: absolute;
-    right: 13px;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    color: black;
-    cursor: pointer;
-    display: none;
+  position: absolute;
+  right: 13px;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  cursor: pointer;
+  display: none;
 }
 
 .password:valid ~ .show {
-    display: block
+  display: block;
 }
 
 .space {
-    margin-top: 16px; 
+  margin-top: 16px;
 }
 
 .pass {
-    text-align: left;
-    margin: 10px 0;
+  text-align: left;
+  margin: 10px 0;
 }
 
 .pass a {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
 }
 
 .pass:hover a {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-
 .form-control input:focus {
-	outline: 0;
-	border-color: #777;
+  outline: 0;
+  border-color: #777;
 }
 
 .form-control.success input {
-	border-color: #2ecc71;
+  border-color: #2ecc71;
 }
 
 .form-control.error input {
-	border-color: #e74c3c;
+  border-color: #e74c3c;
 }
 
 .form-control i {
-	visibility: hidden;
-	position: absolute;
-	top: 40px;
-	right: 10px;
+  visibility: hidden;
+  position: absolute;
+  top: 40px;
+  right: 10px;
 }
 
 .form-control.success i.fa-check-circle {
-	color: #2ecc71;
-	visibility: visible;
+  color: #2ecc71;
+  visibility: visible;
 }
 
 .form-control.error i.fa-exclamation-circle {
-	color: #e74c3c;
-	visibility: visible;
+  color: #e74c3c;
+  visibility: visible;
 }
 
 .form-control small {
-	color: #e74c3c;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	visibility: hidden;
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
 }
 
 .form-control.error small {
-	visibility: visible;
+  visibility: visible;
 }
-input[type="submit"]{
-    background: darkslategray;
-    border: 1px solid black;
-    color: white;
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-	border-radius: 5px;
+input[type="submit"] {
+  background: darkslategray;
+  border: 1px solid black;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 input[type="submit"]:hover {
-    background: white;
-    color: black;
-    transition: 0.5s;
+  background: white;
+  color: black;
+  transition: 0.5s;
 }
 
 .signup {
-    color: white;
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
 }
 
 .signup a {
-    color: #3498db;
-    text-decoration: none;
+  color: #3498db;
+  text-decoration: none;
 }
 
 .signup a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  background: whitesmoke;
+}
+
+header {
+  background-color: #fff;
+}
+
+button {
+  padding: 8px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background: whitesmoke;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  padding: 20px 0;
+  background: #fff;
+}
+
+.nav button {
+  font-family: inherit;
+  border: 1px solid red;
+}
+
+.create-card {
+  display: none;
+  width: 370px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 10px;
+  background: whitesmoke;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
+}
+
+.create-card textarea {
+  width: 100%;
+  border-radius: 5px;
+  font-family: inherit;
+  border: 1px solid lightgray;
+}
+
+.create-card button {
+  width: fit-content;
+}
+
+.flashcards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 0px 10px;
+}
+
+.flashcard {
+  width: 370px;
+  height: 200px;
+  word-wrap: break-word;
+  margin: 10px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
+}
+
+.flashcard h2 {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .flashcard {
+    margin: auto;
   }
-  
-  body{
-	font-family: 'Nunito', sans-serif;
-	font-size: 1rem;
-	background: whitesmoke;
+
+  .flashcard {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
-  
-  header{
-	background-color: #fff;
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  button{
-	padding: 8px;
-	outline: none;
-	cursor: pointer;
-	border: 1px solid lightgray;
-	border-radius: 5px;
-	background: whitesmoke;
+
+  .create-card {
+    width: 100%;
   }
-  
-  button:hover{
-	background-color: rgba(0, 0, 0, 0.1);
+
+  .flashcard {
+    width: 100%;
   }
-  
-  .container{
-	width: 95%;
-	margin: auto;
-  }
-  
-  .nav{
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	margin: auto;
-	padding: 20px 0;
-	background: #fff;
-  }
-  
-  .nav button{
-	font-family: inherit;
-	border: 1px solid red;
-  }
-  
-  .create-card{
-	display:none;
-	width: 370px;
-	margin:auto;
-	padding: 20px;
-	margin-top: 10px;
-	background: whitesmoke;
-	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
-  }
-  
-  .create-card textarea{
-	width: 100%;
-	border-radius: 5px;
-	font-family: inherit;
-	border: 1px solid lightgray;
-  }
-  
-  .create-card button{
-	width: fit-content;
-  }
-  
-  .flashcards{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	width: 100%;
-	margin: auto;
-	margin-top: 10px;
-	padding: 0px 10px;
-  }
-  
-  .flashcard{
-	width: 370px;
-	height: 200px;
-	word-wrap: break-word;
-	margin: 10px; 
-	background:#fff;
-	cursor: pointer;
-	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
-  }
-  
-  .flashcard h2{
-	font-size: 1rem;
-  }
-  
-  @media(max-width:768px){
-	.flashcard{
-	  margin: auto;
-	}
-  
-	.flashcard{
-	  margin-top: 10px;
-	  margin-bottom: 10px;
-	}
-  }
-  
-  @media(max-width:480px){
-	.nav{
-	  flex-direction: column;
-	  align-items: center;
-	}
-  
-	.create-card{
-	  width: 100%;
-	}
-  
-	.flashcard{
-	  width: 100%;
-	}
-  
-  }
+}
 
 /* @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
