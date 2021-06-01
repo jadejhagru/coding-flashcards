@@ -14,12 +14,21 @@
   background-position: center;
 }
 
-li, a, button, .nav {
+li, a, button {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 16px;
     color: white;
     text-decoration: none;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    color: white;
+    font-weight: 600;
+    margin-right: auto;
+    
 }
 
 .navbar {
