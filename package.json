@@ -25,6 +25,7 @@
     "express-openid-connect": "^2.4.0",
     "heroku": "^7.54.0",
     "mysql": "^2.18.1",
+    "node": "^16.1.0",
     "nodemon": "^2.0.7"
   }
 }
