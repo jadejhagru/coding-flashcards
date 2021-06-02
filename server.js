@@ -1,6 +1,9 @@
 // both the sql and handlebars need express
 const express = require("express");
 
+// give ability to fetch on node server
+const fetch = require("node-fetch");
+
 // Handlebars
 const exphbs = require("express-handlebars");
 
@@ -18,48 +21,19 @@ app.use(express.urlencoded({ extended: true }));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-const books = [
-  {
-    title: "Love You Forever",
-    read: false,
-    author: "Robert Munsch",
-  },
-  {
-    title: "The Giving Tree",
-    read: false,
-    author: "Shel Silverstein",
-  },
-  {
-    title: "Where the Red Fern Grows",
-    read: true,
-    author: "Wilson Rawls",
-  },
-  {
-    title: "The Fault in Our Stars",
-    read: true,
-    author: "John Green",
-  },
-  {
-    title: "Out of My Mind",
-    read: false,
-    author: "Sally Engelfried",
-  },
-  {
-    title: "Wonder",
-    read: true,
-    author: "Barbara Schultz",
-  },
-];
-
 // Database routes
 app.use("/api", routes);
 
 // Handlebars frontend serve homepage
 app.get("/", (req, res) => {
-  const data = {
-    library: books,
-  };
-  res.render("index", data);
+  // Fetch data from BACKEND API
+  // res.render to pass it to the front end handlebars stuff
+  fetch("http://localhost:3001/api/flashcards")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("API Fetch Success:", data[0]);
+      res.render("index", data[0]);
+    });
 });
 
 // sync sequelize models to the database, then turn on the server
