@@ -1,92 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/studycards.css">
+  <title>GoCode</title>
 </head>
 <body>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="./assets/img/codex.png" alt="Group Logo" id="logo-img">
-    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li><a class="navbar-brand" href="/">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <span class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Developers
-                        </span>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="https://github.com/anthonypcersosimo" target="_blank">Anthony</a>
-                            <a class="dropdown-item" href="https://github.com/Jimbomoso" target="_blank">James</a>
-                            <a class="dropdown-item" href="https://github.com/kylewhittemore" target="_blank">Kyle</a>
-                            <a class="dropdown-item" href="https://github.com/dgurung01" target="_blank">Dev</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="/form">Add a Deck</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/display">Back to Decks</a></li>
-    
-                </ul>
-            </div>
-        </nav>
-    
-        <div class="box">
-    
-            <h2 class="deckTitle"></h2>
-            
-    
-            <div class="content">
-    
-                <div class="currentCard">
-    
-                    <div onclick="roll();" class="cardBody">
-                        <div class="cardBodyFront"></div>
-                        <div class="cardBodyBack"></div>
-                    </div>
-    
-                </div>
-    
-            </div>
-    
-            <div class="content2">
-    
-                <div class="cardHeader">
-                    <div class="questionSide">
-                        <h3 class="sideName">Question:</h3>
-                    </div>
-    
-                    <div class="answerSide">
-                        <h3 class="sideName">Answer:</h3>
-                    </div>
-                </div>
-    
-                <div class="controls">
-                    <button type="button" class="last btn btn-success">LAST</button>
-                    <button type="button" class="flip btn btn-success">FLIP</button>
-                    <button type="button" class="next btn btn-success">NEXT</button>
-                </div>
-    
-    
-    
-            </div>
-    
-    
-    
-    
+ <div class="bg-img">
+    <header>
+        <div>
+          <h1>GoCode</h1>
         </div>
-    
-    
-        <!-- </div> -->
-        <script src="./assets/js/card.js" async="" defer=""></script>
-    
-    
-    
-    
+    </header>
+
+    <div class="align controls">
+        <button>LAST</button>
+        <button>FLIP</button>
+        <button>NEXT</button>        
+    </div> 
+</div> 
+   
+      
+    <script src="assets/js/study.js"></script>
 
 </body>
 </html>
