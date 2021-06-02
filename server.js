@@ -10,6 +10,7 @@ require("dotenv").config();
 const authRouter = require("./auth");
 
 const app = express();
+app.use(express.static(__dirname + "/public/createcards.html"));
 
 //Session Configuration
 const session = {
@@ -70,10 +71,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
 // Router mounting
 app.use("/", authRouter);
 
-//app.use(express.static("public"));
+// app.use(express.static(__dirname + "/public/createcards.html"));
 
 // app.use(
 //   auth({
@@ -87,14 +92,18 @@ app.use("/", authRouter);
 // );
 
 // // // auth router attaches /login, /logout, and /callback routes to the baseURL
-// // app.use(auth(config));
+// app.use(auth(config));
 
-// app.get("/", (req, res) => {
-//   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-// });
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
 
-// app.get("/profile", requiresAuth(), (req, res) => {
-//   res.send(JSON.stringify(req.oidc.user));
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
+// app.get("/createcards", function (req, res) {
+//   res.send(__dirname + "/public/createcards.html");
 // });
 
 const port = process.env.port || 3001;

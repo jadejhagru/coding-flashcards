@@ -60,6 +60,22 @@ router.get("/logout", (req, res) => {
   res.redirect(logoutURL);
 });
 
+const secured = (req, res, next) => {
+  if (req.user) {
+    return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+};
+
+router.get("/user", secured, (req, res, next) => {
+  const { _raw, _json, ...userProfile } = req.user;
+  res.render("user", {
+    title: "Profile",
+    userProfile: userProfile,
+  });
+});
+
 //Module Exports
 
 module.exports = router;
