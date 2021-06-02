@@ -8,8 +8,10 @@ const fetch = require("node-fetch");
 const exphbs = require("express-handlebars");
 
 // Database/sql stuff
-const routes = require("./src/routes");
-const sequelize = require("./src/config/connection");
+const routes = require("./controllers/routes");
+const sequelize = require("./config/connection");
+
+const path = require("path");
 
 // Auth0
 const { auth } = require("express-openid-connect");
@@ -36,7 +38,7 @@ app.get("/", (req, res) => {
   //res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
   // Fetch data from BACKEND API
   // res.render to pass it to the front end handlebars stuff
-  fetch("http://localhost:3001/api/flashcards")
+  fetch(`http://localhost:3001/api/flashcards/cardsbyuserid/1`)
     .then((response) => response.json())
     .then((data) => {
       const CombineData = {
@@ -57,15 +59,15 @@ app.get("/profile", requiresAuth(), (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//serve css
+app.use(express.static(path.join(__dirname, "public")));
+
 // Sets Handlebars as the default template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Database routes
 app.use("/api", routes);
-
-// Handlebars frontend serve homepage
-app.get("/", (req, res) => {});
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
