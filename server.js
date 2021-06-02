@@ -11,9 +11,49 @@ const exphbs = require("express-handlebars");
 const routes = require("./src/routes");
 const sequelize = require("./src/config/connection");
 
+// Auth0
+const { auth } = require("express-openid-connect");
+//auth0
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.AUTH0_CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+  secret: process.env.AUTH0_CLIENT_SECRET,
+};
+// auth0 display profile
+const { requiresAuth } = require("express-openid-connect");
+
+// Express init
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+app.use(auth(config));
+
+// AUTH0 Routes
+app.get("/", (req, res) => {
+  //res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+  // Fetch data from BACKEND API
+  // res.render to pass it to the front end handlebars stuff
+  fetch("http://localhost:3001/api/flashcards")
+    .then((response) => response.json())
+    .then((data) => {
+      const CombineData = {
+        authStatus: req.oidc.isAuthenticated(),
+        fetchedData: data[0],
+      };
+
+      console.log("API Fetch Success:", CombineData);
+      res.render("index", CombineData);
+    });
+});
+// auth0 show profile data
+app.get("/profile", requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
+
+// Database routes below
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,16 +65,7 @@ app.set("view engine", "handlebars");
 app.use("/api", routes);
 
 // Handlebars frontend serve homepage
-app.get("/", (req, res) => {
-  // Fetch data from BACKEND API
-  // res.render to pass it to the front end handlebars stuff
-  fetch("http://localhost:3001/api/flashcards")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("API Fetch Success:", data[0]);
-      res.render("index", data[0]);
-    });
-});
+app.get("/", (req, res) => {});
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
