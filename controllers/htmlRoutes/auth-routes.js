@@ -1,51 +1,54 @@
 // auth0 display profile
 const { requiresAuth } = require("express-openid-connect");
 const router = require("express").Router();
+const { User, Flashcard } = require("../../models");
 
 // HOME/AUTH0 Login Route
 router.get("/", (req, res) => {
+  // Creating a dataobject that will be passed through 'res.render'
   const authData = {
     isAuthenticated: req.oidc.isAuthenticated(),
     userProfile: req.oidc.user,
   };
 
+  // if authenticate, check if new user
+  if (req.oidc.isAuthenticated()) {
+    // check if user is already in database
+    User.findAll({
+      where: {
+        email: req.oidc.user.email,
+      },
+    })
+      .then((userData) => {
+        console.log(`--Checking if new user`);
+        console.log(userData);
+        if (userData.length === 0) {
+          console.log(`--Registering new user: ${req.oidc.user.email}`);
+
+          User.create({
+            username: req.oidc.user.nickname,
+            email: req.oidc.user.email,
+          }).catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+        } else {
+          console.log(`--Found returning user: ${req.oidc.user.email}`);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
+
+  // Render login handlebars to the {{{body}}}
   res.render("login", authData);
 });
-// auth0 show profile data
+
+/* auth0 show profile data (NO USE ATM)*/
 router.get("/profile", requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });
 
 module.exports = router;
-
-/* AUTH0 + 
-  //res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-  // Fetch data from BACKEND API
-  // res.render to pass it to the front end handlebars stuff
-  fetch(`http://localhost:3001/api/flashcards/cardsbyuserid/1`)
-    .then((response) => response.json())
-    .then((data) => {
-      const CombineData = {
-        authStatus: req.oidc.isAuthenticated(),
-        fetchedData: data[0],
-      };
-
-      console.log("API Fetch Success:", CombineData);
-      res.render("login", CombineData);
-    });
-    
-    const userProfile = {
-      given_name: "Jon",
-      family_name: "Waaler",
-      nickname: "jon.waaler",
-      name: "Jon Waaler",
-      picture:
-      "https://lh3.googleusercontent.com/a/AATXAJxRX9Tpu-BJ0KoGO3ytlNzKeCxAIPy9pYX3oKSw=s96-c",
-      locale: "en",
-      updated_at: "2021-06-02T16:47:13.541Z",
-      email: "jon.waaler@ontariotechu.net",
-      email_verified: true,
-      sub: "google-oauth2|116923808830600261189",
-    };
-    
-*/

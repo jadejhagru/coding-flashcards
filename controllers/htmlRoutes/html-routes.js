@@ -1,24 +1,30 @@
 // auth0 display profile
 const { requiresAuth } = require("express-openid-connect");
 const router = require("express").Router();
-// give ability to fetch on node server
-const fetch = require("node-fetch");
+const { User, Flashcard } = require("../../models");
 
 // Create cards page
 router.get("/createcards", requiresAuth(), (req, res) => {
-  fetch(`http://localhost:3001/api/flashcards/cardsbyuserid/1`)
-    .then((response) => response.json())
-    .then((data) => {
+  User.findAll({
+    where: {
+      email: req.oidc.user.email,
+    },
+    include: {
+      model: Flashcard,
+    },
+  })
+    .then((userData) => {
       // Package data together
       const dataPackage = {
         userProfile: req.oidc.user,
-        cards: data,
+        user: userData,
       };
-      console.log("MY DATA:");
-      console.log(dataPackage);
-      console.log(dataPackage.cards[0].user);
 
       res.render("createcards", dataPackage);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
 });
 

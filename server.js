@@ -1,9 +1,6 @@
 // both the sql and handlebars need express
 const express = require("express");
 
-// give ability to fetch on node server
-const fetch = require("node-fetch");
-
 // Handlebars
 const exphbs = require("express-handlebars");
 

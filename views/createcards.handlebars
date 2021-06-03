@@ -1,7 +1,7 @@
 <div>
         <ul class="navbar">
           <h1 style="color: aliceblue;">CODING FLASHCARDS</h1>
-        <h1 style="color: aliceblue;">username: {{userProfile.nickname}}</h1>
+        <h1 style="color: aliceblue;">email: {{userProfile.email}}</h1>
         <li><button class="new-card-btn">New Card</button></li>
         <li><button class="delete-card-btn">Delete Card</button></li>
         <li><button class="start-btn">START</button></li>
@@ -10,12 +10,11 @@
       
 <h2 style="color: aliceblue;">Flashcard</h2>
 <!-- Replace the HTML code of the book details by importing the Handlebars partial -->
-<p style="color: aliceblue;">Is Authenticated: {{authStatus}}</p>
 <h4 style="color: aliceblue; margin: 20px 0px;"> TEMP LIST OF USER FLASHCARDS</h4>
-{{#each cards}}
+{{#each user.0.flashcards}}
 <div >
-<p style="color: aliceblue; margin-top: 10px;">{{question}}</p>
-<p style="color: aliceblue;">{{answer}}</p>
+<p style="color: aliceblue; margin-top: 10px;">{{dataValues.question}}</p>
+<p style="color: aliceblue;">{{dataValues.answer}}</p>
 </div>
 {{/each}}
 

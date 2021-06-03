@@ -16,6 +16,10 @@ User.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING(128),
+      allowNull: false,
+    },
   },
   {
     sequelize,
