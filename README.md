@@ -9,7 +9,6 @@
 3. [User-Story](#User-Story)
 4. [Acceptance-Criteria](#Acceptance-Criteria)
 5. [Technologies](#Technologies)
-6. [Questions](#questions)
 
 ## Collaborators
 * [Jade Jhagru](http://github.com/jadejhagru)
