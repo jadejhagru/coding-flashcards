@@ -8,7 +8,7 @@
 }
 
 .bg-img {
-  background-image: url("../images/background.jpg");
+  background-image: url("https://raw.githubusercontent.com/jadejhagru/coding-flashcards/feature/create-cards/public/assets/images/background.jpg");
   height: 105vh;
   background-size: cover;
   background-position: center;

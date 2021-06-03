@@ -1,7 +1,7 @@
 const seedUsers = require("./User-seeds");
 const seedFlashcards = require("./Flashcard-seeds");
 
-const sequelize = require("../src/config/connection.js");
+const sequelize = require("../config/connection.js");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });

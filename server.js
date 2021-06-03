@@ -9,13 +9,16 @@ const exphbs = require("express-handlebars");
 
 // Database/sql stuff
 const routes = require("./controllers/routes");
+const authRoutes = require("./controllers/htmlRoutes/auth-routes");
+const htmlRoutes = require("./controllers/htmlRoutes/html-routes");
 const sequelize = require("./config/connection");
-
+// for express static serve
 const path = require("path");
 
 // Auth0
 const { auth } = require("express-openid-connect");
-//auth0
+
+//auth0 config
 const config = {
   authRequired: false,
   auth0Logout: true,
@@ -24,8 +27,6 @@ const config = {
   issuerBaseURL: process.env.ISSUER_BASE_URL,
   secret: process.env.AUTH0_CLIENT_SECRET,
 };
-// auth0 display profile
-const { requiresAuth } = require("express-openid-connect");
 
 // Express init
 const app = express();
@@ -33,43 +34,19 @@ const PORT = process.env.PORT || 3001;
 
 app.use(auth(config));
 
-// AUTH0 Routes
-app.get("/", (req, res) => {
-  //res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-  // Fetch data from BACKEND API
-  // res.render to pass it to the front end handlebars stuff
-  fetch(`http://localhost:3001/api/flashcards/cardsbyuserid/1`)
-    .then((response) => response.json())
-    .then((data) => {
-      const CombineData = {
-        authStatus: req.oidc.isAuthenticated(),
-        fetchedData: data[0],
-      };
-
-      console.log("API Fetch Success:", CombineData);
-      res.render("index", CombineData);
-    });
-});
-// auth0 show profile data
-app.get("/profile", requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user));
-});
-
-// Database routes below
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-//serve css
-app.use(express.static(path.join(__dirname, "public")));
-
 // Sets Handlebars as the default template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Database routes
-app.use("/api", routes);
+// Database routes below
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
-// sync sequelize models to the database, then turn on the server
+app.use("/api", routes); // Database routes
+app.use(authRoutes); // uses: /login /logout /profile
+app.use(htmlRoutes); // uses: /createcards etc....
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log(`App hosted on: http://localhost:${PORT}/`)

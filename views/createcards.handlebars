@@ -1,0 +1,35 @@
+<div>
+        <ul class="navbar">
+          <h1 style="color: aliceblue;">CODING FLASHCARDS</h1>
+        <h1 style="color: aliceblue;">username: {{userProfile.nickname}}</h1>
+        <li><button class="new-card-btn">New Card</button></li>
+        <li><button class="delete-card-btn">Delete Card</button></li>
+        <li><button class="start-btn">START</button></li>
+        </ul>
+      </div>
+      
+<h2 style="color: aliceblue;">Flashcard</h2>
+<!-- Replace the HTML code of the book details by importing the Handlebars partial -->
+<p style="color: aliceblue;">Is Authenticated: {{authStatus}}</p>
+<h4 style="color: aliceblue; margin: 20px 0px;"> TEMP LIST OF USER FLASHCARDS</h4>
+{{#each cards}}
+<div >
+<p style="color: aliceblue; margin-top: 10px;">{{question}}</p>
+<p style="color: aliceblue;">{{answer}}</p>
+</div>
+{{/each}}
+
+<div class="create-card">
+    <h2 style="color: black; text-align: center">Create Flashcard</h2>
+    <label for="question">Question</label>
+    <textarea id="question" maxlength="280"></textarea>
+    <label for="answer" maxlength="280">Answer</label>
+    <br />
+    <textarea id="answer"></textarea>
+    <div>
+        <button class="save-btn">Save</button>
+        <button class="close-btn">Close</button>
+    </div>
+    </div>
+    <div class="flashcards"></div>
+</div>

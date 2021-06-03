@@ -1,0 +1,11 @@
+<div class="content">
+  <header>GoCode</header>
+  {{#if isAuthenticated}}
+    <h1 style="color: aliceblue; margin-bottom: 15px;">You are logged in as:
+      {{userProfile.nickname}}</h1>
+    <button class="lets-study-btn">Let's Study!</button>
+    <button class="logout-btn">Logout</button>
+  {{else}}
+    <button class="login-btn">Login</button>
+  {{/if}}
+</div>
