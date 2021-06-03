@@ -43,10 +43,11 @@ router.get("/:id", (req, res) => {
 
 // POST new flash card
 router.post("/", (req, res) => {
+  console.log("creating new flashcard...");
+  console.log(req.body);
   Flashcard.create({
     question: req.body.question,
     answer: req.body.answer,
-    user_id: req.body.user_id,
   })
     .then((fcData) => res.json(fcData))
     .catch((err) => {
@@ -61,7 +62,6 @@ router.put("/:id", (req, res) => {
     {
       question: req.body.question,
       answer: req.body.answer,
-      user_id: req.body.user_id,
     },
     {
       where: {
