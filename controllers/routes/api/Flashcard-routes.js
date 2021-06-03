@@ -10,23 +10,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// GET all flashcards by its 'id'
-router.get("/cardsbyuserid/:id", (req, res) => {
-  Flashcard.findAll({
-    where: {
-      user_id: req.params.id,
-    },
-    include: {
-      model: User,
-    },
-  })
-    .then((fc_data) => res.json(fc_data))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 // GET a single flashcard by its 'id'
 router.get("/:id", (req, res) => {
   Flashcard.findAll({
@@ -48,6 +31,7 @@ router.post("/", (req, res) => {
   Flashcard.create({
     question: req.body.question,
     answer: req.body.answer,
+    userId: req.body.userId,
   })
     .then((fcData) => res.json(fcData))
     .catch((err) => {
@@ -62,6 +46,7 @@ router.put("/:id", (req, res) => {
     {
       question: req.body.question,
       answer: req.body.answer,
+      userId: req.body.userId,
     },
     {
       where: {

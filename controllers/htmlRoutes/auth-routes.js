@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
     })
       .then((userData) => {
         console.log(`--Checking if new user`);
-        console.log(userData);
         if (userData.length === 0) {
           console.log(`--Registering new user: ${req.oidc.user.email}`);
 
@@ -48,7 +47,7 @@ router.get("/", (req, res) => {
 
 /* auth0 show profile data (NO USE ATM)*/
 router.get("/profile", requiresAuth(), (req, res) => {
-  res.send(JSON.stringify(req.oidc.user));
+  res.json(req.oidc.user);
 });
 
 module.exports = router;

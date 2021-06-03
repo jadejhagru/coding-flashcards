@@ -2,6 +2,7 @@ const flashcards = document.getElementsByClassName("flashcards")[0];
 const createCard = document.getElementsByClassName("create-card")[0];
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
+//const userEmail =
 let contentArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
   : [];
@@ -40,13 +41,37 @@ function addFlashcard() {
     my_question: question.value,
     my_answer: answer.value,
   };
+  // Get the id of the current user
+  //   fetch("/profile")
+  //     .then((res) => res.json())
+  //     .then((data) => {});
 
-  postData("/api/flashcards", {
-    question: question.value,
-    answer: answer.value,
-  }).then((data) => {
-    console.log(data);
-  });
+  // We first get the profile email
+  fetch("/profile")
+    .then(function (resProfile) {
+      return resProfile.json();
+    })
+    .then(function (profileData) {
+      console.log("PROFILE DATA");
+      console.log(profileData);
+      // Then using the profile email we search the data base to get the userId
+      fetch(`api/users/getid/${profileData.email}`)
+        .then(function (fullUserData) {
+          return fullUserData.json();
+        })
+        .then(function (Data) {
+          console.log(`POSTING DATA`);
+          console.log(Data[0].id);
+          postData("/api/flashcards", {
+            question: flashcard_info.my_question,
+            answer: flashcard_info.my_answer,
+            userId: Data[0].id,
+          });
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   contentArray.push(flashcard_info);
   localStorage.setItem("items", JSON.stringify(contentArray));

@@ -28,6 +28,21 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Get user id
+router.get("/getid/:email", (req, res) => {
+  console.log("req: " + req.params.email);
+  User.findAll({
+    where: {
+      email: req.params.email,
+    },
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 // POST create a new user
 router.post("/", (req, res) => {
   User.create({
