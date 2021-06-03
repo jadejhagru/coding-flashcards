@@ -19,7 +19,7 @@
 
 ## Project Description
 * This is Project 2 for UofT Bootcamp. This is a coding flashcard application where any students can learn about coding and study in a more effective way. 
-* User will be prompted to create and account.
+* User will be prompted to create an account.
 * User can then login and will be directed to our dashboard where they can add, edit, or delete flashcards.
 
 ## User Story 
