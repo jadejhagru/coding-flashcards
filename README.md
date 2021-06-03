@@ -1,4 +1,4 @@
-<h1 align="center">Project 2 - goCode!👋</h1>
+<h1 align="center">Project 2 - goCode!👾</h1>
 <p align="center">
 
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://shields.io) ![javascript](https://img.shields.io/badge/javascript-100%25-ff69b4)
