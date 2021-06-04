@@ -110,6 +110,23 @@ async function putData(url = "", data = {}) {
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
+async function deleteData(url = "") {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+    //mode: "cors", // no-cors, *cors, same-origin
+    //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    //credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    //body: JSON.stringify(data), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
 
 function delFlashcards() {
   localStorage.clear();
@@ -165,31 +182,13 @@ function populateCardsAtStart() {
 }
 
 // Update an existing flashcard on the database
-function DB_UpdateFlashcard() {
-  // Get all flashcards from the data base
-  fetch("/profile") // Finds who is logged in currently
-    .then(function (resProfile) {
-      return resProfile.json();
-    })
-    .then(function (profileData) {
-      // Then using the profile email we search the data base to get the userId
-      fetch(`api/users/getid/${profileData.email}`)
-        .then(function (fullUserData) {
-          return fullUserData.json();
-        })
-        .then(function (Data) {
-          console.log(`--User ${Data[0].id} is GETing data...`);
+function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
+  putData(`/api/flashcards/${flashcardId}`, {
+    question: newQuestion,
+    answer: newAnswer,
+  });
+}
 
-          putData(`/api/flashcards/${id}`);
-
-          fetch(`/api/users/${Data[0].id}`)
-            .then(function (resUserdata) {
-              return resUserdata.json();
-            })
-            .then(function (userData) {});
-        });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+function DeleteFlashcard(flashcardId) {
+  deleteData(`/api/flashcards/${flashcardId}`);
 }
