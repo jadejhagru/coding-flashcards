@@ -46,7 +46,6 @@ router.put("/:id", (req, res) => {
     {
       question: req.body.question,
       answer: req.body.answer,
-      userId: req.body.userId,
     },
     {
       where: {
