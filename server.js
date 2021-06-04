@@ -102,7 +102,7 @@ app.get("/profile", requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });
 
-// app.get("/createcards", function (req, res) {
+// app.post("/createcards", function (req, res) {
 //   res.send(__dirname + "/public/createcards.html");
 // });
 
