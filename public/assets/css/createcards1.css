@@ -10,7 +10,7 @@
   }
   
 .bg-img {
-    background-image: url("assets/images/background.jpg");
+    background-image: url("../images/background.jpg");
     height: 105vh;
     background-size: cover;
     background-position: center;
@@ -23,7 +23,7 @@ header {
     justify-content: right;
     align-items: flex-end; */
     width: 100%;
-    background-image: url("assets/images/background.jpg");
+    background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -67,10 +67,12 @@ button {
     color: black;
     transition: all 0.3s ease 0s;
     margin: 5px;
+    
     /* justify-content: space-around;
     float: right;     */
     
 }
+
 
 button:hover {
     padding: 9px 25px;
@@ -81,6 +83,15 @@ button:hover {
     color: white;
     transition: all 0.3s ease 0s;
 }
+
+button a {
+  text-decoration: none;
+  color: black;
+}
+
+/* button a:hover {
+  color: white;
+} */
 
 /* .container{
   width: 95%;
