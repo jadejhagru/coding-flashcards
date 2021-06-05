@@ -1,0 +1,29 @@
+<header>
+  <div class="container">
+    <div>
+      <h1>Coding Flashcards</h1>
+      <h3>Dashboard</h3>
+      <div class="align">
+        <button onclick="showCreateCardBox()">New Card</button>
+        <button onclick="delFlashcards()">Delete Cards</button>
+        <button onclick="startStudying()">Start Studying</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="create-card">
+    <h2 style="color: black;text-align: center;">Create Flashcard</h2>
+    <label for="question">Question</label>
+    <textarea id="question" maxlength="280"></textarea>
+    <label for="answer" maxlength="280">Answer</label>
+    <br />
+    <textarea id="answer"></textarea>
+    <div>
+      <button onclick="addFlashcard()">Save</button>
+      <button onclick="hideCreateCardBox()">Close</button>
+    </div>
+  </div>
+  <div class="flashcards"></div>
+</div>

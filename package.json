@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "start": "node server.js"
+=======
+    "seed": "node seeds/index.js"
+>>>>>>> 352fcdb2a133a7da0a909b925d86a77babccf7a9
   },
   "repository": {
     "type": "git",
@@ -23,9 +27,14 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "express-openid-connect": "^2.4.0",
+<<<<<<< HEAD
     "heroku": "^7.54.0",
     "mysql": "^2.18.1",
     "node": "^16.1.0",
     "nodemon": "^2.0.7"
+=======
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+>>>>>>> 352fcdb2a133a7da0a909b925d86a77babccf7a9
   }
 }

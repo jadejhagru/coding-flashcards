@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS flashcards_db;
+
+-- CREATE DATABASE
+CREATE DATABASE flashcards_db;
