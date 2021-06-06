@@ -3,11 +3,11 @@ const createCard = document.getElementsByClassName("create-card")[0];
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 //const userEmail =
-let contentArray = localStorage.getItem("items")
-  ? JSON.parse(localStorage.getItem("items"))
-  : [];
+// let contentArray = localStorage.getItem("items")
+//   ? JSON.parse(localStorage.getItem("items"))
+//   : [];
 
-contentArray.forEach(divMaker);
+// contentArray.forEach(divMaker);
 populateCardsAtStart();
 
 function divMaker(text) {
@@ -89,8 +89,12 @@ async function postData(url = "", data = {}) {
     redirect: "follow", // manual, *follow, error
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Posted Data id:", data.id);
+    });
+  //return response.json(); // parses JSON response into native JavaScript objects
 }
 
 async function putData(url = "", data = {}) {
@@ -173,6 +177,11 @@ function populateCardsAtStart() {
                 // TODO: Instead of loading from local storage, use the data from our database
                 // userData[0].flashcards[i].question
                 // userData[0].flashcards[i].answer
+                const cardData = {
+                  my_question: userData[0].flashcards[i].question,
+                  my_answer: userData[0].flashcards[i].answer,
+                };
+                divMaker(cardData);
               }
             });
         });
