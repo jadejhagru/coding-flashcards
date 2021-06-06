@@ -68,11 +68,11 @@ function addFlashcard() {
     });
 
   // TODO: Remove loading from local storage
-  contentArray.push(flashcard_info);
-  localStorage.setItem("items", JSON.stringify(contentArray));
-  divMaker(contentArray[contentArray.length - 1]);
-  question.value = "";
-  answer.value = "";
+  // contentArray.push(flashcard_info);
+  // localStorage.setItem("items", JSON.stringify(contentArray));
+  // divMaker(contentArray[contentArray.length - 1]);
+  // question.value = "";
+  // answer.value = "";
 }
 
 async function postData(url = "", data = {}) {
@@ -111,6 +111,7 @@ async function putData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
+//To do
 function delFlashcards() {
   localStorage.clear();
   flashcards.innerHTML = "";
