@@ -13,7 +13,6 @@
   background-size: cover;
   background-position: center;
   overflow: scroll;
-  filter: grayscale(70%);
 }
 
 /* .bg-img:after {
@@ -233,6 +232,7 @@ header {
 
 button {
   padding: 8px;
+  margin-top: 10px;
   outline: none;
   cursor: pointer;
   border: 1px solid lightgray;
@@ -269,7 +269,7 @@ button:hover {
   margin: auto;
   padding: 20px;
   margin-top: 10px;
-  background: whitesmoke;
+  background: rgb(175, 175, 175);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
 }
 
@@ -300,7 +300,7 @@ button:hover {
   height: 200px;
   word-wrap: break-word;
   margin: 10px;
-  background: #fff;
+  background: rgb(177, 176, 176);
   cursor: pointer;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
 }

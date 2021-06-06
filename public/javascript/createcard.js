@@ -19,7 +19,14 @@ function divMaker(text) {
   delButton.textContent = "Delete";
   delButton.className = "button";
 
-  editButton.setAttribute("style", "margin: 60px");
+  editButton.setAttribute(
+    "style",
+    "font-weight: 500; margin-top: 50px; margin-left: 25%;"
+  );
+  delButton.setAttribute(
+    "style",
+    "font-weight: 500; margin-top: 50px; margin-left: 10px;"
+  );
 
   h2_question.setAttribute(
     "style",
