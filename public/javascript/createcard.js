@@ -3,6 +3,7 @@ const createCard = document.getElementsByClassName("create-card")[0];
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 
+
 populateCardsAtStart();
 function divMaker(text) {
   var div = document.createElement("div");
@@ -10,6 +11,12 @@ function divMaker(text) {
   var h2_answer = document.createElement("h2");
   var flashcard_id = document.createElement("p");
   div.className = "flashcard";
+  var editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+  editButton.className = "button";
+  var delButton = document.createElement("button");
+  delButton.textContent = "Delete";
+  delButton.className = "button";
   h2_question.setAttribute(
     "style",
     "border-top:1px solid red; padding: 15px; margin-top:30px"
@@ -21,6 +28,8 @@ function divMaker(text) {
   div.appendChild(h2_question);
   div.appendChild(h2_answer);
   div.appendChild(flashcard_id);
+  div.appendChild(editButton);
+  div.appendChild(delButton);
   div.addEventListener("click", function () {
     if (h2_answer.style.display == "none") h2_answer.style.display = "block";
     else h2_answer.style.display = "none";
@@ -32,6 +41,8 @@ function addFlashcard() {
     my_question: question.value,
     my_answer: answer.value,
   };
+
+    
   // We first get the profile email
   fetch("/profile")
     .then(function (resProfile) {
@@ -156,13 +167,18 @@ function populateCardsAtStart() {
     .catch(function (error) {
       console.log(error);
     });
+
+
 }
 // Update an existing flashcard on the database
 function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
   putData(`/api/flashcards/${flashcardId}`, {
     question: newQuestion,
     answer: newAnswer,
+    
   });
+
+
 }
 function DeleteFlashcard(flashcardId) {
   deleteData(`/api/flashcards/${flashcardId}`);
