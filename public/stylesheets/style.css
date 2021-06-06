@@ -12,6 +12,8 @@
   height: 105vh;
   background-size: cover;
   background-position: center;
+  overflow: scroll;
+  filter: grayscale(70%);
 }
 
 /* .bg-img:after {
@@ -316,7 +318,7 @@ div.align {
 }
 
 button {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   background-color: black;
@@ -327,7 +329,7 @@ button {
 }
 
 button:hover {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   background-color: white;
@@ -336,7 +338,7 @@ button:hover {
 }
 
 .button {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: 12px;
   background-color: black;
