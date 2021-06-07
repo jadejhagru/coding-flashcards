@@ -17,17 +17,11 @@ function divMaker(text) {
   var editButton = document.createElement("button");
   editButton.textContent = "Edit";
   editButton.className = "button";
-<<<<<<< HEAD
-  editButton.addEventListener("click", editCard)
+  editButton.addEventListener("click", editCard);
   var delButton = document.createElement("button");
   delButton.textContent = "Delete";
   delButton.className = "button";
-  delButton.addEventListener("click", deleteCard)
-=======
-
-  var delButton = document.createElement("button");
-  delButton.textContent = "Delete";
-  delButton.className = "button";
+  delButton.addEventListener("click", deleteCard);
 
   editButton.setAttribute(
     "style",
@@ -38,7 +32,6 @@ function divMaker(text) {
     "font-weight: 500; margin-top: 50px; margin-left: 10px;"
   );
 
->>>>>>> ea8cf2171cf4f6612838a9af837641cb6bc441ae
   h2_question.setAttribute(
     "style",
     "border-top:1px solid red; padding: 15px; margin-top:30px"
@@ -195,45 +188,35 @@ function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
     question: newQuestion,
     answer: newAnswer,
   });
-<<<<<<< HEAD
 
   delFlashcards();
   populateCardsAtStart();
-
-
-=======
->>>>>>> ea8cf2171cf4f6612838a9af837641cb6bc441ae
 }
 function DeleteFlashcard(flashcardId) {
   deleteData(`/api/flashcards/${flashcardId}`);
 
   delFlashcards();
   populateCardsAtStart();
-  
 }
 
-var editCard = function() {
-  
+var editCard = function () {
   console.log("edit");
   console.log(this.parentNode);
-  
-var cardSelected = this.parentNode;
+
+  var cardSelected = this.parentNode;
 
   console.log(cardSelected.childNodes[2].innerText);
 
-UpdateFlashcard(cardSelected.childNodes[2].innerText, cardSelected.childNodes[0].innerText, cardSelected.childNodes[1].innerText)
-
-
- 
+  UpdateFlashcard(
+    cardSelected.childNodes[2].innerText,
+    cardSelected.childNodes[0].innerText,
+    cardSelected.childNodes[1].innerText
+  );
 };
 
-
-var deleteCard = function() {
+var deleteCard = function () {
   console.log("delete");
-  
-var cardSelected = document.querySelector();
+
+  var cardSelected = document.querySelector();
   cardSelected.remove();
 };
-
-
-
