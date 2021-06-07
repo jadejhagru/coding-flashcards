@@ -11,6 +11,7 @@ function divMaker(text) {
   h2_question.setAttribute("contenteditable", true);
   var h2_answer = document.createElement("h2");
   h2_answer.className = "answer";
+  h2_answer.setAttribute("contenteditable", true);
   var flashcard_id = document.createElement("p");
   div.className = "flashcard";
 
@@ -199,6 +200,7 @@ function DeleteFlashcard(flashcardId) {
   populateCardsAtStart();
 }
 
+// Edit Flashcard
 var editCard = function () {
   console.log("edit");
   console.log(this.parentNode);
@@ -214,9 +216,17 @@ var editCard = function () {
   );
 };
 
+// Delete Flashcard
+
 var deleteCard = function () {
   console.log("delete");
 
-  var cardSelected = document.querySelector();
-  cardSelected.remove();
+  var cardSelected = this.parentNode;
+
+DeleteFlashcard(
+    cardSelected.childNodes[2].innerText
+  
+  );
+
+
 };
