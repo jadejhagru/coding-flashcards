@@ -6,13 +6,19 @@ const answer = document.getElementById("answer");
 populateCardsAtStart();
 function divMaker(text) {
   var div = document.createElement("div");
+  var titleQ = document.createElement("h2");
   var h2_question = document.createElement("h2");
   h2_question.className = "question";
   h2_question.setAttribute("contenteditable", true);
+  var titleA = document.createElement("h2");
   var h2_answer = document.createElement("h2");
   h2_answer.className = "answer";
   h2_answer.setAttribute("contenteditable", true);
   var flashcard_id = document.createElement("p");
+  flashcard_id.setAttribute(
+    "style",
+    "display: none"
+  );
   div.className = "flashcard";
 
   var editButton = document.createElement("button");
@@ -26,22 +32,29 @@ function divMaker(text) {
 
   editButton.setAttribute(
     "style",
-    "font-weight: 500; margin-top: 50px; margin-left: 25%;"
+    "font-weight: 500; margin-left: 25%;"
   );
   delButton.setAttribute(
     "style",
-    "font-weight: 500; margin-top: 50px; margin-left: 10px;"
+    "font-weight: 500; margin-left: 10px;"
   );
 
   h2_question.setAttribute(
     "style",
-    "border-top:1px solid red; padding: 15px; margin-top:30px"
+    "padding: 15px"
   );
+  titleQ.innerText = "Question:";
+  titleA.innerText = "Answer:"
+  titleQ.setAttribute("style", "border-top:2px solid black; padding: 15px; margin-top:30px")
   h2_question.innerHTML = text.my_question;
-  h2_answer.setAttribute("style", "text-align:center; display:none; color:red");
+  h2_answer.setAttribute("style", 
+  "padding: 15px"
+  );
   h2_answer.innerHTML = text.my_answer;
   flashcard_id.innerText = text.my_flashcardid;
+  div.appendChild(titleQ);
   div.appendChild(h2_question);
+  div.appendChild(titleA);
   div.appendChild(h2_answer);
   div.appendChild(flashcard_id);
   div.appendChild(editButton);

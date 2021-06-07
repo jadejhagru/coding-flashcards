@@ -348,11 +348,12 @@ button:hover {
   margin: auto;
   margin-top: 10px;
   padding: 0px 10px;
+
 }
 
 .flashcard {
   width: 370px;
-  height: 200px;
+  height: 600px;
   word-wrap: break-word;
   margin: 10px;
   background: #fff;
