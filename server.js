@@ -9,6 +9,8 @@ const routes = require("./controllers/routes");
 const authRoutes = require("./controllers/htmlRoutes/auth-routes");
 const htmlRoutes = require("./controllers/htmlRoutes/html-routes");
 const sequelize = require("./config/connection");
+const favicon = require("express-favicon");
+
 // for express static serve
 const path = require("path");
 
@@ -27,8 +29,9 @@ const config = {
 
 // Express init
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
+app.use(favicon(__dirname + "/favicon.ico"));
 app.use(auth(config));
 
 // Sets Handlebars as the default template engine
