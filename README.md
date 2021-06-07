@@ -1,19 +1,3 @@
-<h1 align="center">Project 2 - goCode!👾</h1>
-<p align="center">
-
-[![license](https://img.shields.io/badge/license-MIT-blue)](https://shields.io) ![javascript](https://img.shields.io/badge/javascript-100%25-ff69b4)
-
-## Table of Contents
-
-1. [Collaborators](#Collaborators)
-2. [Deployed](#Deployed)
-3. [Project-Description](#Project-Description)
-4. [User-Story](#User-Story)
-5. [Acceptance-Criteria](#Acceptance-Criteria)
-6. [Technologies](#Technologies)
-
-### Collaborators
-
 <h1 align="center">Project 2 - goCode!👋</h1>
 <p align="center">
 
@@ -26,7 +10,6 @@
 3. [User-Story](#User-Story)
 4. [Acceptance-Criteria](#Acceptance-Criteria)
 5. [Technologies](#Technologies)
-6. [Questions](#questions)
 
 ## Collaborators
 
@@ -37,19 +20,7 @@
 
 ### Deployed
 
-### Project Description
-
-- This is Project 2 for UofT Bootcamp. This is a coding flashcard application where any students can learn about coding and study in a more effective way.
-- User will be prompted to create an account.
-- User can then login and will be directed to our dashboard where they can add, edit, or delete flashcards.
-
-### User Story
-
-AS a student\
-I WANT a coding flashcard application\
-SO THAT I can learn review more efficiently
-
-### Aceptance Criteria
+https://project-2-jaws.herokuapp.com/
 
 ## Project Description
 
@@ -75,11 +46,6 @@ WHEN I click “delete”\
 THEN I can delete cards\
 WHEN I click “Start Studying”\
 THEN I can study flashcards
-
-### Technologies
-
-=======
-THEN I can study flashcards\
 
 ## Technologies
 
