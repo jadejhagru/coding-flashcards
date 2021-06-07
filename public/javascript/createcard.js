@@ -3,7 +3,6 @@ const createCard = document.getElementsByClassName("create-card")[0];
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 
-
 populateCardsAtStart();
 function divMaker(text) {
   var div = document.createElement("div");
@@ -14,14 +13,32 @@ function divMaker(text) {
   h2_answer.className = "answer";
   var flashcard_id = document.createElement("p");
   div.className = "flashcard";
+
   var editButton = document.createElement("button");
   editButton.textContent = "Edit";
   editButton.className = "button";
+<<<<<<< HEAD
   editButton.addEventListener("click", editCard)
   var delButton = document.createElement("button");
   delButton.textContent = "Delete";
   delButton.className = "button";
   delButton.addEventListener("click", deleteCard)
+=======
+
+  var delButton = document.createElement("button");
+  delButton.textContent = "Delete";
+  delButton.className = "button";
+
+  editButton.setAttribute(
+    "style",
+    "font-weight: 500; margin-top: 50px; margin-left: 25%;"
+  );
+  delButton.setAttribute(
+    "style",
+    "font-weight: 500; margin-top: 50px; margin-left: 10px;"
+  );
+
+>>>>>>> ea8cf2171cf4f6612838a9af837641cb6bc441ae
   h2_question.setAttribute(
     "style",
     "border-top:1px solid red; padding: 15px; margin-top:30px"
@@ -47,7 +64,6 @@ function addFlashcard() {
     my_answer: answer.value,
   };
 
-    
   // We first get the profile email
   fetch("/profile")
     .then(function (resProfile) {
@@ -84,8 +100,8 @@ async function postData(url = "", data = {}) {
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       console.log("Posted Data id:", data.id);
       delFlashcards();
       populateCardsAtStart();
@@ -172,21 +188,21 @@ function populateCardsAtStart() {
     .catch(function (error) {
       console.log(error);
     });
-
-
 }
 // Update an existing flashcard on the database
 function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
   putData(`/api/flashcards/${flashcardId}`, {
     question: newQuestion,
     answer: newAnswer,
-    
   });
+<<<<<<< HEAD
 
   delFlashcards();
   populateCardsAtStart();
 
 
+=======
+>>>>>>> ea8cf2171cf4f6612838a9af837641cb6bc441ae
 }
 function DeleteFlashcard(flashcardId) {
   deleteData(`/api/flashcards/${flashcardId}`);
