@@ -29,7 +29,7 @@ const config = {
 
 // Express init
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(favicon(__dirname + "/favicon.ico"));
 app.use(auth(config));

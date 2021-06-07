@@ -28,36 +28,29 @@ router.get("/createcards", requiresAuth(), (req, res) => {
     });
 });
 
-module.exports = router;
-
-/* AUTH0 + 
-  //res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-  // Fetch data from BACKEND API
-  // res.render to pass it to the front end handlebars stuff
-  fetch(`http://localhost:3001/api/flashcards/cardsbyuserid/1`)
-    .then((response) => response.json())
-    .then((data) => {
-      const CombineData = {
-        authStatus: req.oidc.isAuthenticated(),
-        fetchedData: data[0],
+// Start studying page
+router.get("/study", requiresAuth(), (req, res) => {
+  User.findAll({
+    where: {
+      email: req.oidc.user.email,
+    },
+    include: {
+      model: Flashcard,
+    },
+  })
+    .then((userData) => {
+      // Package data together
+      const dataPackage = {
+        userProfile: req.oidc.user,
+        user: userData,
       };
 
-      console.log("API Fetch Success:", CombineData);
-      res.render("login", CombineData);
+      res.render("study", dataPackage);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-    
-    const userProfile = {
-      given_name: "Jon",
-      family_name: "Waaler",
-      nickname: "jon.waaler",
-      name: "Jon Waaler",
-      picture:
-      "https://lh3.googleusercontent.com/a/AATXAJxRX9Tpu-BJ0KoGO3ytlNzKeCxAIPy9pYX3oKSw=s96-c",
-      locale: "en",
-      updated_at: "2021-06-02T16:47:13.541Z",
-      email: "jon.waaler@ontariotechu.net",
-      email_verified: true,
-      sub: "google-oauth2|116923808830600261189",
-    };
-    
-*/
+});
+
+module.exports = router;

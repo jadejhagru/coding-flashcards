@@ -3,14 +3,22 @@
 // and go to the createcards page.
 $(document).ready(function () {
   $(".lets-study-btn").click(function () {
-    location.replace("/createcards");
+    location.assign("/createcards");
   });
 
   $(".login-btn").click(function () {
-    location.replace("/login");
+    location.assign("/login");
   });
 
   $(".logout-btn").click(function () {
-    location.replace("/logout");
+    location.assign("/logout");
+  });
+
+  $(".home-btn").click(function () {
+    location.assign("/");
   });
 });
+
+function startStudying() {
+  location.assign("/study");
+}

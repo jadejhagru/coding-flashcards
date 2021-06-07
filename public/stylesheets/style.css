@@ -348,6 +348,12 @@ button:hover {
   padding: 9px 25px;
 }
 
+/* Study.handlebars specific styles */
+.study-controls {
+  position: fixed;
+  bottom: 10px;
+}
+
 @media (max-width: 768px) {
   .flashcard {
     margin: auto;
