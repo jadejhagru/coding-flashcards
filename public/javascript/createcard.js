@@ -8,15 +8,20 @@ populateCardsAtStart();
 function divMaker(text) {
   var div = document.createElement("div");
   var h2_question = document.createElement("h2");
+  h2_question.className = "question";
+  h2_question.setAttribute("contenteditable", true);
   var h2_answer = document.createElement("h2");
+  h2_answer.className = "answer";
   var flashcard_id = document.createElement("p");
   div.className = "flashcard";
   var editButton = document.createElement("button");
   editButton.textContent = "Edit";
   editButton.className = "button";
+  editButton.addEventListener("click", editCard)
   var delButton = document.createElement("button");
   delButton.textContent = "Delete";
   delButton.className = "button";
+  delButton.addEventListener("click", deleteCard)
   h2_question.setAttribute(
     "style",
     "border-top:1px solid red; padding: 15px; margin-top:30px"
@@ -178,8 +183,41 @@ function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
     
   });
 
+  delFlashcards();
+  populateCardsAtStart();
+
 
 }
 function DeleteFlashcard(flashcardId) {
   deleteData(`/api/flashcards/${flashcardId}`);
+
+  delFlashcards();
+  populateCardsAtStart();
+  
 }
+
+var editCard = function() {
+  
+  console.log("edit");
+  console.log(this.parentNode);
+  
+var cardSelected = this.parentNode;
+
+  console.log(cardSelected.childNodes[2].innerText);
+
+UpdateFlashcard(cardSelected.childNodes[2].innerText, cardSelected.childNodes[0].innerText, cardSelected.childNodes[1].innerText)
+
+
+ 
+};
+
+
+var deleteCard = function() {
+  console.log("delete");
+  
+var cardSelected = document.querySelector();
+  cardSelected.remove();
+};
+
+
+
