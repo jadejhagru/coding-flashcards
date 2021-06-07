@@ -5,53 +5,65 @@ const answer = document.getElementById("answer");
 
 populateCardsAtStart();
 function divMaker(text) {
+  // Create parent element
   var div = document.createElement("div");
-  var titleQ = document.createElement("h2");
-  var h2_question = document.createElement("h2");
-  h2_question.className = "question";
-  h2_question.setAttribute("contenteditable", true);
-  var titleA = document.createElement("h2");
-  var h2_answer = document.createElement("h2");
-  h2_answer.className = "answer";
-  h2_answer.setAttribute("contenteditable", true);
-  var flashcard_id = document.createElement("p");
-  flashcard_id.setAttribute(
-    "style",
-    "display: none"
-  );
-  div.className = "flashcard";
 
+  // Create child elements
+  var titleQ = document.createElement("h2");
+  var h2_question = document.createElement("textarea");
+  var titleA = document.createElement("h2");
+  var h2_answer = document.createElement("textarea");
+  var flashcard_id = document.createElement("p");
   var editButton = document.createElement("button");
+  var delButton = document.createElement("button");
+
+  // set classnames
+  div.className = "flashcard";
+  h2_question.className = "question";
+  h2_answer.className = "answer";
+
+  // Set-up edit button
   editButton.textContent = "Edit";
   editButton.className = "button";
   editButton.addEventListener("click", editCard);
-  var delButton = document.createElement("button");
+  editButton.setAttribute("style", "font-weight: 500; margin-left: 25%;");
+
+  // Set-up delete button
   delButton.textContent = "Delete";
   delButton.className = "button";
   delButton.addEventListener("click", deleteCard);
+  delButton.setAttribute("style", "font-weight: 500; margin-left: 10px;");
 
-  editButton.setAttribute(
+  // question attribute styles
+  h2_question.setAttribute("style", "padding: 15px");
+  //h2_question.setAttribute("contenteditable", true);
+
+  // answer attribute styles
+  h2_answer.setAttribute("style", "padding: 15px");
+  //h2_answer.setAttribute("contenteditable", true);
+
+  // Hide back-end flashcard id from being read.
+  flashcard_id.setAttribute("style", "display: none");
+
+  titleQ.setAttribute(
     "style",
-    "font-weight: 500; margin-left: 25%;"
-  );
-  delButton.setAttribute(
-    "style",
-    "font-weight: 500; margin-left: 10px;"
+    "border-top:2px solid black; padding: 15px; margin-top:30px"
   );
 
-  h2_question.setAttribute(
-    "style",
-    "padding: 15px"
-  );
+  // disable text area
+  h2_question.disabled = true;
+  h2_answer.disabled = true;
+
+  // Set title text
   titleQ.innerText = "Question:";
-  titleA.innerText = "Answer:"
-  titleQ.setAttribute("style", "border-top:2px solid black; padding: 15px; margin-top:30px")
+  titleA.innerText = "Answer:";
+
+  // Set flashcard content to passed through text object
   h2_question.innerHTML = text.my_question;
-  h2_answer.setAttribute("style", 
-  "padding: 15px"
-  );
   h2_answer.innerHTML = text.my_answer;
   flashcard_id.innerText = text.my_flashcardid;
+
+  // Append elements to flashcard div container
   div.appendChild(titleQ);
   div.appendChild(h2_question);
   div.appendChild(titleA);
@@ -60,8 +72,10 @@ function divMaker(text) {
   div.appendChild(editButton);
   div.appendChild(delButton);
 
+  // append flashcard div to flashcards list
   flashcards.appendChild(div);
 }
+
 function addFlashcard() {
   var flashcard_info = {
     my_question: question.value,
@@ -104,8 +118,8 @@ async function postData(url = "", data = {}) {
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log("Posted Data id:", data.id);
       delFlashcards();
       populateCardsAtStart();
@@ -212,6 +226,39 @@ function DeleteFlashcard(flashcardId) {
 
 // Edit Flashcard
 var editCard = function () {
+  // console.log("edit");
+  // console.log(this.parentNode);
+  var divNode = this.parentNode;
+
+  // is child 3 (answer node) disabled?
+  if (divNode.childNodes[3].disabled) {
+    // If the text area is disabled re-enable the text areas
+    divNode.childNodes[3].disabled = false;
+    divNode.childNodes[1].disabled = false;
+
+    // Also change the name of the button to save rather than edit
+    divNode.childNodes[5].innerText = "Save";
+  } else {
+    // Disable the textareas
+    divNode.childNodes[3].disabled = true;
+    divNode.childNodes[1].disabled = true;
+
+    // Change button text
+    divNode.childNodes[5].innerText = "Edit";
+
+    // Now update the database
+    var cardSelected = this.parentNode;
+    console.log(cardSelected.childNodes[2].innerText);
+    UpdateFlashcard(
+      cardSelected.childNodes[4].innerText,
+      cardSelected.childNodes[1].value,
+      cardSelected.childNodes[3].value
+    );
+  }
+};
+
+// save card
+var saveCard = function () {
   console.log("edit");
   console.log(this.parentNode);
 
@@ -233,10 +280,5 @@ var deleteCard = function () {
 
   var cardSelected = this.parentNode;
 
-DeleteFlashcard(
-    cardSelected.childNodes[4].innerText
-  
-  );
-
-
+  DeleteFlashcard(cardSelected.childNodes[4].innerText);
 };
