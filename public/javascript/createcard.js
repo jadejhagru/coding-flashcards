@@ -59,10 +59,6 @@ function divMaker(text) {
   div.appendChild(flashcard_id);
   div.appendChild(editButton);
   div.appendChild(delButton);
-  div.addEventListener("click", function () {
-    if (h2_answer.style.display == "none") h2_answer.style.display = "block";
-    else h2_answer.style.display = "none";
-  });
   flashcards.appendChild(div);
 }
 function addFlashcard() {
@@ -152,12 +148,8 @@ async function deleteData(url = "") {
 function delFlashcards() {
   flashcards.innerHTML = "";
 }
-function showCreateCardBox() {
-  createCard.style.display = "block";
-}
-function hideCreateCardBox() {
-  createCard.style.display = "none";
-}
+
+
 // This function will load cards based on the logged in user and display them on the screen.
 function populateCardsAtStart() {
   // Get all flashcards from the data base
@@ -223,9 +215,9 @@ var editCard = function () {
   console.log(cardSelected.childNodes[2].innerText);
 
   UpdateFlashcard(
-    cardSelected.childNodes[2].innerText,
-    cardSelected.childNodes[0].innerText,
-    cardSelected.childNodes[1].innerText
+    cardSelected.childNodes[4].innerText,
+    cardSelected.childNodes[1].innerText,
+    cardSelected.childNodes[3].innerText
   );
 };
 
@@ -237,7 +229,7 @@ var deleteCard = function () {
   var cardSelected = this.parentNode;
 
 DeleteFlashcard(
-    cardSelected.childNodes[2].innerText
+    cardSelected.childNodes[4].innerText
   
   );
 
