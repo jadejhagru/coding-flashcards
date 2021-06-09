@@ -1,9 +1,31 @@
+// function cardDeck () {
+//     let deckId;
+//     let deck = [];
+//     let count = 0;
+//     // assigns the url from the lead in page 
+//     let url = window.location.search;
+    
+    
+// const getCards =  => require("./api/Flashcards");
+
+// app.get('./api/Flashcards', (req, res) =>{
+//     res.json(Flashcards)
+// })
+
+// + flashcard_id, response => {
+//     deck = response;
+//     console.log("response", deck)
+//     displayCard(deck);
+// });
+
+
+
 const flashcards = document.getElementsByClassName("flashcards")[0];
 const createCard = document.getElementsByClassName("create-card")[0];
 const question = document.getElementById("question");
 const answer = document.getElementById("answer");
 
-populateCardsAtStart();
+
 function divMaker(text) {
   // Create parent element
   var div = document.createElement("div");
@@ -21,32 +43,6 @@ function divMaker(text) {
   div.className = "flashcard";
   h2_question.className = "question";
   h2_answer.className = "answer";
-
-  // Set-up edit button
-  editButton.textContent = "Edit";
-  editButton.className = "button";
-  editButton.addEventListener("click", editCard);
-  editButton.setAttribute("style", "font-weight: 500; margin-left: 25%;");
-
-  var savebutton = function(){
-    if(editButton.innerText === "Edit" && editButton.onclick){
-      
-      editButton.innerText = "Save";
-      editButton.className = "save";
-
-    } else {
-
-      editButton.innerText = "Edit";
-      editButton.className = "edit";
-    }
-  };
-
-
-  // Set-up delete button
-  delButton.textContent = "Delete";
-  delButton.className = "button";
-  delButton.addEventListener("click", deleteCard);
-  delButton.setAttribute("style", "font-weight: 500; margin-left: 10px;");
 
   // question attribute styles
   h2_question.setAttribute("style", "padding: 15px");
@@ -157,32 +153,7 @@ async function putData(url = "", data = {}) {
   });
   return response.json(); // parses JSON response into native JavaScript objects
 }
-async function deleteData(url = "") {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
-    //mode: "cors", // no-cors, *cors, same-origin
-    //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    //credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    //body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
-function delFlashcards() {
-  flashcards.innerHTML = "";
-}
-function showCreateCardBox() {
-  createCard.style.display = "block";
-}
-function hideCreateCardBox() {
-  createCard.style.display = "none";
-}
+
 // This function will load cards based on the logged in user and display them on the screen.
 function populateCardsAtStart() {
   // Get all flashcards from the data base
@@ -221,78 +192,9 @@ function populateCardsAtStart() {
       console.log(error);
     });
 }
-// Update an existing flashcard on the database
-function UpdateFlashcard(flashcardId, newQuestion, newAnswer) {
-  putData(`/api/flashcards/${flashcardId}`, {
-    question: newQuestion,
-    answer: newAnswer,
-  });
 
-  delFlashcards();
-  populateCardsAtStart();
-}
-function DeleteFlashcard(flashcardId) {
-  deleteData(`/api/flashcards/${flashcardId}`);
-
-  delFlashcards();
-  populateCardsAtStart();
+function startStudying() {
+  
+  console.log("hi");
 }
 
-// Edit Flashcard
-var editCard = function () {
-  // console.log("edit");
-  // console.log(this.parentNode);
-  var divNode = this.parentNode;
-
-  // is child 3 (answer node) disabled?
-  if (divNode.childNodes[3].disabled) {
-    // If the text area is disabled re-enable the text areas
-    divNode.childNodes[3].disabled = false;
-    divNode.childNodes[1].disabled = false;
-
-    // Also change the name of the button to save rather than edit
-    divNode.childNodes[5].innerText = "Save";
-  } else {
-    // Disable the textareas
-    divNode.childNodes[3].disabled = true;
-    divNode.childNodes[1].disabled = true;
-
-    // Change button text
-    divNode.childNodes[5].innerText = "Edit";
-
-    // Now update the database
-    var cardSelected = this.parentNode;
-    console.log(cardSelected.childNodes[2].innerText);
-    UpdateFlashcard(
-      cardSelected.childNodes[4].innerText,
-      cardSelected.childNodes[1].value,
-      cardSelected.childNodes[3].value
-    );
-  }
-};
-
-// save card
-var saveCard = function () {
-  console.log("edit");
-  console.log(this.parentNode);
-
-  var cardSelected = this.parentNode;
-
-  console.log(cardSelected.childNodes[2].innerText);
-
-  UpdateFlashcard(
-    cardSelected.childNodes[4].innerText,
-    cardSelected.childNodes[1].innerText,
-    cardSelected.childNodes[3].innerText
-  );
-};
-
-// Delete Flashcard
-
-var deleteCard = function () {
-  console.log("delete");
-
-  var cardSelected = this.parentNode;
-
-  DeleteFlashcard(cardSelected.childNodes[4].innerText);
-};

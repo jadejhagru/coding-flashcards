@@ -13,6 +13,7 @@
   background-size: cover;
   background-position: center;
   overflow: scroll;
+  filter: grayscale(50%);
 }
 
 /* .bg-img:after {

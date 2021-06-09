@@ -17,8 +17,15 @@ $(document).ready(function () {
   $(".home-btn").click(function () {
     location.assign("/");
   });
+
+  $(".startStudying").click(function(){
+    location.assign("/study");
+  });
 });
 
-function startStudying() {
-  location.assign("/study");
-}
+
+
+// function startStudying() {
+  
+//   console.log("hi");
+// }

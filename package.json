@@ -1,7 +1,7 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h1 align=\"center\">Project 2 - goCode!👋</h1> <p align=\"center\">",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -27,5 +27,6 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
-  }
+  },
+  "keywords": []
 }

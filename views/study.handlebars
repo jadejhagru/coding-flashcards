@@ -1,13 +1,15 @@
 <header>
   <h1 class="home-btn">goCode</h1>
-  <h2 class="home-btn">studying</h2>
+  
 </header>
 <div class="study-card">
-  <h2>Question</h2>
-  <h2>Answer</h2>
+  
 </div>
 <div class="study-controls">
   <button class="prev-card"><i class="fas fa-angle-left"></i></button>
-  <button class="flip-btn">Flip</button>
+  <button class="flip-btn" onclick="populateCardsAtStart()">Flip</button>
   <button class="next-btn"><i class="fas fa-angle-right"></i></button>
+  <button onclick="addFlashcards()"></button>
 </div>
+
+<script src="/public/javascript/createcards.js"></script>
